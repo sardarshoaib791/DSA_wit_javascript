@@ -5,24 +5,19 @@
 //==========> Script
     <script>
  let data= [2,6,8,45,67,89,55,34,69,12,45,60]
- for (let i=0; i<data.length; i++){
-    document.write(`${i}:   ${data[i]} <br>`)
+ let newElement= 55;
+ let position = 4;
+ console.log(data.length)
+ console.log(data)
+ for(let i = data.length-1; i>=position; i--){
+    if(i>=position){
+        data[i+1]=data[i];
+        if(i==position){
+            data[i]=newElement;
+        }
+    }
  }
- // accessing element:
- let x =5;
- document.write(`${x} element in data is: ${data[x]} <br>`)
- document.write(`<br> <br> <br> <br>`)
-
- // access value with button and validation:
-
- function getValue(){
-    let el = document.getElementById("element").value
-    if(el<data.length && typeof parseInt(el)==="number" && !el<0){
-        alert(data[el])
-    }else{
-        alert("enter valid value")  
- }
-}
+ console.log(data)
     </script>
 //===========script
 
@@ -31,7 +26,7 @@
 
 </head>
 <body>
-    <input type="text" id="element" />
-    <button onclick="getValue()" >get Value</button>
+    <!-- <input type="text" id="element" />
+    <button onclick="getValue()" >get Value</button> -->
 </body>
 </html>
