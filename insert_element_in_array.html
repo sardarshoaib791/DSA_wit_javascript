@@ -5,10 +5,11 @@
 //==========> Script
     <script>
  let data= [2,6,8,45,67,89,55,34,69,12,45,60]
- let newElement= 55;
- let position = 4;
  console.log(data.length)
  console.log(data)
+ function insertValue(){
+     let newElement= document.getElementById("element").value;
+     let position = document.getElementById("position").value-1;
  for(let i = data.length-1; i>=position; i--){
     if(i>=position){
         data[i+1]=data[i];
@@ -18,6 +19,7 @@
     }
  }
  console.log(data)
+}
     </script>
 //===========script
 
@@ -26,7 +28,13 @@
 
 </head>
 <body>
-    <!-- <input type="text" id="element" />
-    <button onclick="getValue()" >get Value</button> -->
+    <br>
+    <br>
+    <br>
+    <input type="text" id="element" placeholder="Enter Value">
+    <br>
+    <br>
+    <input type="text" id="position" placeholder="Enter postion">
+  <button onclick="insertValue()" >Insert value</button>
 </body>
 </html>
