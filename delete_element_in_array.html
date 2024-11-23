@@ -4,20 +4,24 @@
       <title>Delete Element in array</title>
 
       <script>
-        let data = [20,25,27,30,35,40]
-        let delElement = 2;
+        function deleteElement() {
+        let   data = [20,25,27,30,35,40]
+        let delElement = document.getElementById("deleteElement").value;
+        delElement = parseInt(delElement)
         console.log(data)
 
-        for( let i = delElement; i<data.length-1; i++){
+        for( let i = delElement; i<data.length; i++){
             data[i]= data[i+1]
             }
             data.length=data.length-1
         
-        console.log(data)
+        console.log(data)}
 
       </script>
 </head>
 <body>
+    <input type="number" id="deleteElement" placeholder="enter delete value"/>
+    <button onclick="deleteElement()">Delete</button>
     
 </body>
 </html>
