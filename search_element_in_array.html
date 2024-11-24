@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Linear search element in array</title>
+    <script>
+       function searchEle() {
+        let data =[10,15,20,25,30,35,40];
+        let searchElement = parseInt(document.getElementById("searchElement").value);
+        for(let i = 0; i<data.length; i++){
+            if(data[i]==searchElement){
+                console.log(` ${searchElement} in position at ${i} index `)
+                break;
+            }
+        }}
+//for multiple element search;
+        // let data =[10,15,20,25,30,35,40,25];
+        // let searchElement = 25;
+        // for(let i = 0; i<data.length; i++){
+        //     if(data[i]==searchElement){
+        //         console.log(` ${searchElement} in position at ${i} index `)
+                
+        //     }
+        // }
+    </script>
+</head>
+<body>
+    <input type="number" id="searchElement" placeholder="search element in array"/>
+    <button onclick="searchEle()">search</button>
+    
+</body>
+</html>
