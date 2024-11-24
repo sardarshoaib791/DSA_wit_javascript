@@ -8,7 +8,7 @@
  console.log(data.length)
  console.log(data)
  function insertValue(){
-     let newElement= document.getElementById("element").value;
+     let newElement= parseInt(document.getElementById("element").value);
      let position = document.getElementById("position").value-1;
  for(let i = data.length-1; i>=position; i--){
     if(i>=position){
