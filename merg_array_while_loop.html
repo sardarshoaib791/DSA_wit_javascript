@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Merg two sorted array in third with whlile loop</title>
+    <script>
+        let data1=[2,4,6,8,10,13,14,15]
+        let data2=[3,5,7,9,11,12]
+        let data3=[]
+        let i=0;
+        let j=0;
+        let k=0;
+        while(i<data1.length && j<data2.length){
+            if(data1[i]<data2[j]){
+                data3[k]=data1[i]
+                i++;
+            }else{
+                data3[k]=data2[j];
+                j++;
+            }
+            k++;
+        }
+        while(i<data1.length){
+            data3[k]=data1[i]
+            i++;
+            k++;
+        }
+        while(j<data2.length){
+            data3[k]=data2[j]
+            j++;
+            k++;
+        }
+        console.log(data3)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
