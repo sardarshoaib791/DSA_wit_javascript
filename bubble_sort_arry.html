@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Array sorting thorough array</title>
+    <script>
+        let arr = [5, 6, 3, 4, 1, 2];
+        console.log("Original array:", arr)
+        for (let i = 0; i < arr.length; i++) {
+            for (j = 0; j < arr.length; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    let temp = 0;
+                    temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    // [arr[j], arr[i]]=[arr[i], arr[j]]   //without store in third variable
+                }
+            }
+        }
+        console.log(arr)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
