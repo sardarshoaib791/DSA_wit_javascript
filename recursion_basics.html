@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Recursion</title>
+    <script>
+        //Example of recursion
+        // function apple(value) {
+        //     console.log(value)
+        //     if (value < 10) {
+        //         apple(value + 1) //recall function itself:
+        //     }
+        // }
+        // apple(data = 0)
+
+        //Example for find factorial:
+        function fact(val) {
+            if (val == 0) {
+                return 1
+            }
+            return val * fact(val - 1)
+        }
+        let value = 5
+        // fact(value)
+        console.log(fact(value));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
