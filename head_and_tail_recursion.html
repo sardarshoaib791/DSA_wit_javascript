@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Head and tail recursion</title>
+    <script>
+        //========
+        // function color() {
+        //     data = 5;
+        //     console.log(data)
+        // }
+        // function func_4() {
+        //     color();
+        // }
+        // function func_3() {
+        //     func_4();
+        // }
+        // function func_2() {
+        //     func_3();
+        // }
+        // func_2();
+
+        //===========
+        function test(x) {
+            console.log("head recursion :", x)
+            if (x > 0) {
+                test(x - 1)
+            }
+            console.log("tail recursion :", x)
+        }
+        test(5);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
