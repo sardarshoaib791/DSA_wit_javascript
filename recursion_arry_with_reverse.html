@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>reverse array with recursion</title>
+    <script>
+        let arr = [1, 2, 3, 4, 5];
+        let temp = 0;
+        function reverseArr(data, i, j) {
+            // console.log("Orignal arr", data, "initial", i, "end", j)
+            console.log(data);
+            if (i <= j) {
+                temp = data[i];
+                data[i] = data[j];
+                data[j] = temp;
+                reverseArr(data, i + 1, j - 1);
+            }
+        }
+
+        reverseArr(arr, 0, arr.length - 1);
+    </script>
+</head>
+
+<body></body>
+
+</html>
