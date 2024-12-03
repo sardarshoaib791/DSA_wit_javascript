@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Stack with javaScript</title>
+    <script>
+        let data = [];
+        let currentSize = data.length;
+        let maxValue = 5;
+
+
+        function push() {
+            let newVal = document.getElementById("newValue").value;
+            if (newVal === "") {
+                alert("Please enter a value.");
+                return;
+            }
+            if (currentSize >= maxValue) {
+                alert("stack is full you can't add" + newVal)
+                return;
+            } else {
+                data[currentSize] = parseInt(newVal);
+                currentSize += 1
+            }
+            console.warn(data)
+        };
+
+        function pop() {
+            if (currentSize > 0) {
+                currentSize -= 1
+                data.length = currentSize
+            }
+            else {
+                alert("stack is already empty")
+                return;
+            }
+            console.warn(data)
+        }
+        // push(5);
+        // push(10);
+        // push(15);
+        // push(25);
+        // push(30);
+        // pop();
+        // console.log(currentSize)
+        console.warn(data)
+    </script>
+</head>
+
+<body>
+    <input type="text" id="newValue">
+    <button onclick="push()">Add Value</button>
+    <button onclick="pop()">Remove Value</button>
+
+</body>
+
+</html>
