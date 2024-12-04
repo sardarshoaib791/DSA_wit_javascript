@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Reverese string</title>
+    <script>
+        let stack = [];
+        let currentSize = stack.length;
+        function push(newVal) {
+            stack[currentSize] = newVal
+            currentSize += 1
+            // console.warn(newVal)
+        };
+        function pop() {
+            lastItem = stack[currentSize - 1]
+            currentSize -= 1
+            stack.length = currentSize
+            return lastItem
+
+        }
+        function reverseStr(item) {
+            for (i = 0; i < item.length; i++) {
+                push(item[i])
+            }
+            for (i = 0; i < item.length; i++) {
+                item[i] = pop()
+
+            }
+        }
+        // push(20)
+        // push(20)
+        // push(20)
+        // pop()
+        let str = "shoaib";
+        str = str.split("")
+        reverseStr(str)
+        // console.warn(str)
+        console.warn(str.join(""))
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
