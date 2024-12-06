@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Reverse String with class</title>
+    <script>
+        class ReverseString {
+            stack = [];
+            currentSize;
+            maxVal;
+            lastIndex;
+            constructor(size) {
+                this.maxVal = size
+                this.currentSize = this.stack.length
+                // console.log("caled", size)
+            }
+            push(newVal) {
+                this.stack[this.currentSize] = newVal
+                this.currentSize += 1
+
+            }
+            pop() {
+                this.lastIndex = this.stack[this.currentSize - 1];
+                this.currentSize -= 1;
+                this.stack.length = this.currentSize;
+                // console.log(this.lastIndex)
+                // console.warn("last index value :", this.lastIndex)
+                return this.lastIndex
+
+            }
+            reverseStr(item) {
+                for (let i = 0; i < item.length; i++) {
+                    this.push(item[i])
+                }
+                for (let i = 0; i < item.length; i++) {
+                    item[i] = this.pop()
+
+                }
+            }
+            display() {
+                console.warn(rName.join(""))
+            }
+        }
+        Rt1 = new ReverseString(6)
+        let rName = "Ali"
+        rName = rName.split("")
+        Rt1.reverseStr(rName)
+        // Rt1.pop()
+        // console.warn(Rt1.stack)
+        // console.warn(rName.join(""))
+        Rt1.display()
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
