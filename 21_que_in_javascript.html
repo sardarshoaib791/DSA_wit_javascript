@@ -9,6 +9,52 @@
     //FIFO aproach:
 
     <script>
+        let que = [];
+        let currentSize = que.length;
+        let maxVal = 5;
+
+        function enque(newVal) {
+            if (que.length >= maxVal) {
+                alert("Que Already full")
+            } else {
+                que[currentSize] = newVal;
+                currentSize++;
+            }
+
+        }
+        function deque() {
+            if (currentSize > 0) {
+                for (i = 0; i < que.length; i++) {
+                    que[i] = que[i + 1];
+                }
+                currentSize -= 1
+                que.length = currentSize
+            } else {
+                alert("que already empty")
+            }
+
+        }
+        function display() {
+            console.warn(que)
+        }
+        enque(5)
+        enque(15)
+        enque(25)
+        enque(35)
+        enque(45)
+        // deque()
+        // deque()
+        // deque()
+        // deque()
+        // deque()
+        deque()
+        display()
+        //by default function=========>>>:
+        
+        // let data = [1, 2, 3, 4, 5]
+        // data.unshift(5)
+        // console.warn(data)
+
 
     </script>
 
