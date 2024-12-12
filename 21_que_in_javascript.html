@@ -20,7 +20,8 @@
                 que[currentSize] = parseInt(document.getElementById("newVal").value);
                 currentSize++;
             }
-            display()
+            document.getElementById('newVal').value = '';
+            document.getElementById("newVal").focus();
 
         }
         function deque() {
@@ -33,7 +34,6 @@
             } else {
                 alert("que already empty")
             }
-            display()
         };
         //====> front , rear and isEmpty?
         function front(){
@@ -94,9 +94,10 @@
     <br>
     <input type="text" placeholder="enter value" id="newVal">
     <button onclick="enque()">Add value in array</button>
-    <button onclick="deque()" color="red">Remove value from array</button>
-    <button onclick="front()" color="red">chcek current front element</button>
-    <button onclick="rear()" color="red">chcek current rear element</button>
+    <button onclick="deque()" >Remove value from array</button>
+    <button onclick="front()" >chcek current front element</button>
+    <button onclick="rear()" >chcek current rear element</button>
+    <button onclick="display()" >Display</button>
 
 </body>
 
