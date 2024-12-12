@@ -13,17 +13,18 @@
         let currentSize = que.length;
         let maxVal = 5;
 
-        function enque(newVal) {
+        function enque() {
             if (que.length >= maxVal) {
                 alert("Que Already full")
             } else {
-                que[currentSize] = newVal;
+                que[currentSize] = parseInt(document.getElementById("newVal").value);
                 currentSize++;
             }
+            display()
 
         }
         function deque() {
-            if (currentSize > 0) {
+            if (!isEmpty()) {
                 for (i = 0; i < que.length; i++) {
                     que[i] = que[i + 1];
                 }
@@ -32,22 +33,48 @@
             } else {
                 alert("que already empty")
             }
-
+            display()
+        };
+        //====> front , rear and isEmpty?
+        function front(){
+            if(!isEmpty()){
+                console.warn("front of que is=", que[0])
+            }else{
+                alert("que is empty")
+            }
+        }
+        function rear(){
+            if(!isEmpty()){
+                console.warn("Rear of the que = ", que[currentSize-1])
+            }
+            else{
+                alert("Que is empty=")
+            }
         }
         function display() {
-            console.warn(que)
+            console.warn("Que is =",que)
+        };
+        function isEmpty(){
+            if(currentSize<=0){
+                return true
+            } else{
+                return false
+            }
         }
-        enque(5)
-        enque(15)
-        enque(25)
-        enque(35)
+        // enque(5)
+        // enque(15)
+        // enque(25)
+        // enque(35)
+        // enque(40)
         // deque()
         // deque()
         // deque()
         // deque()
         // deque()
-        deque()
-        display()
+        // deque()
+        // front()
+        // rear()
+        // display()
         //by default function=========>>>:
         
         // let data = [1, 2, 3, 4, 5]
@@ -62,6 +89,14 @@
 </head>
 
 <body>
+    <br>
+    <br>
+    <br>
+    <input type="text" placeholder="enter value" id="newVal">
+    <button onclick="enque()">Add value in array</button>
+    <button onclick="deque()" color="red">Remove value from array</button>
+    <button onclick="front()" color="red">chcek current front element</button>
+    <button onclick="rear()" color="red">chcek current rear element</button>
 
 </body>
 
