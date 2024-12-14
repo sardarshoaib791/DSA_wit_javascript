@@ -3,6 +3,51 @@
 
 <head>
     <title>Circular queue</title>
+    <script>
+        class Queue {
+            constructor(size) {
+                this.maxSize = size;
+                this.item = new Array(size);
+                this.currentSize = 0;
+                this.front = -1;
+                this.rear = -1;
+            }
+            enque(newVal) {
+                this.rear++;
+                this.item[this.rear] = newVal;
+                this.currentSize++
+                if (this.front == -1) {
+                    this.front = this.rear
+                }
+                console.log(this.item)
+                console.log("front=", this.front)
+                console.log("Rear =", this.rear)
+                console.log("Current Size", this.currentSize)
+
+            };
+            deque() {
+                this.front++;
+                this.item[this.front - 1] = null;
+                this.currentSize--;
+                console.log(this.item)
+                console.log("front=", this.front)
+                console.log("Rear =", this.rear)
+                console.log("Current Size", this.currentSize)
+
+
+            }
+        }
+
+        let queue = new Queue(5)
+        queue.enque(5)
+        queue.enque(5)
+        queue.enque(10)
+        queue.enque(15)
+        queue.deque()
+        queue.deque()
+        queue.deque()
+
+    </script>
 </head>
 
 <body>
