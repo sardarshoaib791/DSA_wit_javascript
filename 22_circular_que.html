@@ -13,39 +13,51 @@
                 this.rear = -1;
             }
             enque(newVal) {
-                this.rear++;
-                this.item[this.rear] = newVal;
-                this.currentSize++
-                if (this.front == -1) {
-                    this.front = this.rear
+                if (this.currentSize != this.maxSize) {
+                    if (this.rear == this.maxSize - 1) {
+                        this.rear = 0;
+                    } else {
+                        this.rear++;
+                    }
+
+                    this.item[this.rear] = newVal;
+                    this.currentSize++
+                    if (this.front == -1) {
+                        this.front = this.rear
+                    }
+                } else {
+                    alert("full ")
                 }
-                console.log(this.item)
-                console.log("front=", this.front)
-                console.log("Rear =", this.rear)
-                console.log("Current Size", this.currentSize)
+                // console.log(queue)
 
             };
             deque() {
-                this.front++;
-                this.item[this.front - 1] = null;
+                if (this.currentSize != 0) {
+                    this.item[this.front] = null;
+                    if (this.front == this.max - 1) {
+                        this.front = 0
+                    } else {
+                        this.front++;
+                    }
+                } else {
+                    this.rear = -1;
+                    this.front = -1;
+                    alert("que is empty")
+                }
                 this.currentSize--;
-                console.log(this.item)
-                console.log("front=", this.front)
-                console.log("Rear =", this.rear)
-                console.log("Current Size", this.currentSize)
-
-
+                // console.log(queue)
             }
         }
 
         let queue = new Queue(5)
-        queue.enque(5)
-        queue.enque(5)
         queue.enque(10)
-        queue.enque(15)
+        queue.enque(20)
+        queue.enque(30)
+        queue.enque(40)
+        queue.enque(50)
         queue.deque()
-        queue.deque()
-        queue.deque()
+        queue.enque(111)
+        console.log(queue)
 
     </script>
 </head>
