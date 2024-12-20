@@ -5,27 +5,30 @@
     <title>Linear Search in javascript</title>
     <script>
         let data = [5, 10, 15, 20, 25, 30, 35];
-        let lElement = 15;
         let found = false;
-
-        for (let i = 0; i < data.length; i++) {
-            if (lElement == data[i]) {
-                console.log(`Element ${lElement} in array at position ${i}`);
-                found = true;
-                break;
+        function searhEle() {
+            let lElement = document.getElementById("sElement").value;
+            for (let i = 0; i < data.length; i++) {
+                if (lElement == data[i]) {
+                    console.log(`Element ${lElement} in array at position ${i}`);
+                    found = true;
+                    break;
+                }
             }
-        }
-        if (!found) {
-            console.log("not found");
-        }
-        else {
-            console.log("find waooo")
+            if (!found) {
+                console.log("not found");
+            }
+            else {
+                console.log("find waooo")
+            }
         }
 
     </script>
 </head>
 
 <body>
+    <input id="sElement" />
+    <button onclick="searhEle()">search</button>
 
 </body>
 
