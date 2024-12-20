@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Binary Search</title>
+    <script>
+        let data = [2, 6, 7, 8, 10, 12, 13, 24, 25, 26, 27, 28, 29, 30]
+        let start = 0;
+        let end = data.length - 1;
+        let position = undefined;
+        function searchEl() {
+            let findEl = parseInt(document.getElementById("element").value);
+            while (start <= end) {
+                let mid = Math.floor((start + end) / 2)
+                if (data[mid] === findEl) {
+                    position = mid;
+                    break;
+                } else if (findEl > data[mid]) {
+                    start = mid + 1
+                } else {
+                    end = mid - 1
+                }
+            }
+            console.log(`${findEl} is at position : ${position}`)
+        }
+
+    </script>
+</head>
+
+<body>
+    <input id="element">
+    <button onclick="searchEl()">search element</button>
+</body>
+
+</html>
