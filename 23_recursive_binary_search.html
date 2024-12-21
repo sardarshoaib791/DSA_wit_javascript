@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Recursive Binary Search</title>
+    <script>
+        let data = [5, 10, 15, 20, 25, 30, 35, 40, 41, 42]
+        let start = 0;
+        let end = data.length - 1;
+        let findEl = 35;
+
+        let position = undefined;
+        function recursiveBinarySearch(start, end) {
+            let mid = Math.floor((start + end) / 2)
+            // console.log(data[mid])
+            if (start > end) {
+                console.log("not found")
+                return;
+            }
+            if (data[mid] === findEl) {
+                position = mid;
+                console.log(findEl, "in position at", position)
+                return;
+            } else if (data[mid] < findEl) {
+                start = mid + 1
+                recursiveBinarySearch(start, end)
+            } else {
+                end = mid - 1
+                recursiveBinarySearch(start, end)
+            }
+        }
+        recursiveBinarySearch(start, end)
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
