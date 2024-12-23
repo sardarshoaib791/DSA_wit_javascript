@@ -5,7 +5,9 @@
     <title>Selection sort</title>
     <script>
         let data = [20, 12, 53, 3, 5, 66, 77, 4, 88, 1, 6, 2, 99]
-        function SelectionSort(data) {
+
+        // ascending order===>
+        function SelectionSort_asc(data) {
             let minVal;
             for (let i = 0; i < data.length; i++) {
                 minVal = i
@@ -21,8 +23,44 @@
                 // data[i] = temp
             }
         }
-        SelectionSort(data)
-        console.log(data)
+        //decending order===>method 1
+        function SelectionSort_dec_m1(data) {
+            let maxVal;
+            for (let i = 0; i < data.length; i++) {
+                maxVal = i
+                for (let j = i + 1; j < data.length; j++) {
+                    if (data[j] > data[maxVal]) {
+                        maxVal = j;
+                    }
+                }
+                [data[i], data[maxVal]] = [data[maxVal], data[i]]
+                //swap value
+                // let temp = data[minVal];
+                // data[minVal] = data[i];
+                // data[i] = temp
+            }
+        }
+
+        //decending order===>method 2
+
+        function selectionSort_dec_m2(data) {
+            let maxVal;
+            for (let i = data.length - 1; i >= 0; i--) {
+                maxVal = i;
+                for (let j = i - 1; j >= 0; j--) {
+                    if (data[j] < data[maxVal]) {
+                        maxVal = j;
+                    }
+                }
+                [data[i], data[maxVal]] = [data[maxVal], data[i]]
+            }
+        }
+        SelectionSort_asc(data)
+        console.log("Ascending order", data)
+        SelectionSort_dec_m1(data)
+        console.log("Decending order M1", data)
+        selectionSort_dec_m2(data)
+        console.log("Decending order M2", data)
     </script>
 </head>
 
