@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Chceck String is anagram or not</title>
+    <script>
+
+        function isAnagram(str1, str2) {
+            let objStr1 = {};
+            if (str1.length !== str2.length) {
+                return false
+            }
+            for (ch of str1) {
+                objStr1[ch] = (objStr1[ch] || 0) + 1
+            }
+            // console.log(objStr1)
+            for (ch of str2) {
+                if (!objStr1[ch]) {
+                    return false
+                }
+                objStr1[ch]--
+            }
+            return true
+
+        }
+        console.log(isAnagram('hello', 'eollh'));
+
+
+
+
+
+
+
+        //======> method 2
+        // function isAnagram(str, target) {
+        //     // Clean both strings: remove non-alphabet characters and convert to lowercase
+        //     const cleanStr = str.replace(/[^\w]/g, '').toLowerCase();
+        //     const cleanTarget = target.replace(/[^\w]/g, '').toLowerCase();
+
+        //     // If their lengths don't match, they can't be anagrams
+        //     if (cleanStr.length !== cleanTarget.length) {
+        //         return false;
+        //     }
+
+        //     // Sort both strings and compare
+        //     return cleanStr.split('').sort().join('') === cleanTarget.split('').sort().join('');
+        // }
+
+        // // Example usage
+        // console.log(isAnagram('listen', 'silent')); // true
+        // console.log(isAnagram('hello', 'elloh'));   // false
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
