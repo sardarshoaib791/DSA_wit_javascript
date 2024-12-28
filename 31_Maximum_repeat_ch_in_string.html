@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>maximum repeat character in string</title>
+    <script>
+        function maxChar(str) {
+            let obj = {};
+            let maxCh = '';
+            // let maxCount = 0;
+            for (ch of str) {
+                if (obj[ch]) {
+                    obj[ch] += 1
+                } else {
+                    obj[ch] = 1
+                }
+                if (maxCh === '' || obj[ch] > obj[maxCh]) {
+                    maxCh = ch;
+                }
+                // if (obj[ch] > maxCount) {
+                //     maxCh = ch;
+                //     maxCount = obj[ch]; // Update maxCount to the new highest count
+                // }
+            }
+            return maxCh;
+        }
+        let str = "hello";
+        console.log(maxChar(str))
+
+        //====> 2nd method : 
+
+        // let str = "hello";
+        // let obj = {};
+        // let maxCh = '';
+
+        // for (let i = 0; i < str.length; i++) {
+        //     let ch = str[i];
+        //     if (obj[ch]) {
+        //         obj[ch] += 1;
+        //     } else {
+        //         obj[ch] = 1;
+        //     }
+        //     if (maxCh === '' || obj[ch] > obj[maxCh]) {
+        //         maxCh = ch;
+        //     }
+        // }
+        // console.log(maxCh);
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
