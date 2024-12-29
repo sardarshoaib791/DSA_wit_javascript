@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Object or hashtable</title>
+    <script>
+        let data = {
+            name: 'Shoaib',
+            age: 25,
+            contact: +1234,
+            getName: function () {
+                return this.name
+            }
+        }
+        for (x in data) {
+            console.log(data[x])
+        }                                                   //for in loop on object
+        console.log(data.name)                             //get any value
+        delete data.contact                               // Delete any value
+        data.age = 26                                    //update ant value
+        data.email = 'shoaib@gmail.com'                 //add new value 
+        data.getAge = function () { return this.age }  //add new function 
+
+        console.log(Object.keys(data))               //get keys from object
+        console.log(Object.values(data))            //get values from object
+        console.log(Object.entries(data))          // get entries from object
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
