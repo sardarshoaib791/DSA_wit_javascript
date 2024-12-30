@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Map Dsa with JavaScript</title>
+    <script>
+        let data = new Map([
+            ['name', 'shoaib'],
+            [true, 'sardar'],
+            ['age', 26]
+        ]);
+
+        // some spec operation with map
+        data.set('color', 'white')  //ad new value 
+        console.log("Size of date", data.size)
+        console.log('check keys ', data.has('age'))
+        console.log('get data:', data.get('name'))
+        // data.clear()   //clear all data
+        data.delete('a')
+
+        console.log(data)
+        // loops on Map
+        for (x of data) {
+            console.log(x[0]) //keys
+            console.log(x[1]) //value
+        }
+
+        data.forEach((value, keys) => {
+            console.log(value) //get values
+            console.log(keys) //get keys
+        })
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
