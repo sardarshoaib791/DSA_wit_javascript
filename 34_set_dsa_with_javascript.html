@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Set Dsa with javaScript</title>
+
+    <script>
+        let data = new Set(['a', 'b', 'A', 'b', 'd'])
+
+        data.add("c")                   // add new value
+        data.add({ 'name': 'shoaib' }) //add object in set 
+        console.log(data.has('a'))    // check value 
+        data.delete('d')             // Delete Value
+
+        //Functions===>
+        console.log(data.entries())
+        console.log(data.keys())
+        console.log(data.values())
+
+        //loops 
+        for (x of data) {
+            console.log(x)
+        }    // for of loop
+
+        data.forEach((value) => {
+            console.log(value)
+        })  // forEach loop 
+
+
+        // console.log(data)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
