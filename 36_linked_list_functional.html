@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Linked list functional base</title>
+    <script>
+
+        let head = {
+            value: 100,
+            next: null
+        }
+        let tail = head
+        let size = 1
+
+        function appendNode(value) {
+            let newNode = {
+                value: value,
+                next: null
+            }
+            tail.next = newNode
+            tail = newNode
+            size += 1
+        }
+
+        function traversing() {
+            let currentNode = head
+            while (currentNode !== null) {
+                console.log(currentNode)
+                currentNode = currentNode.next
+            }
+        }
+
+        appendNode(300)
+        appendNode(400)
+        appendNode(500)
+        appendNode(600)
+        traversing()
+        // console.log(head)
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
