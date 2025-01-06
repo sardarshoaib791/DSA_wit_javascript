@@ -25,17 +25,35 @@
         function traversing() {
             let currentNode = head
             while (currentNode !== null) {
-                console.log(currentNode)
+                // console.log(currentNode)
                 currentNode = currentNode.next
             }
         }
+        function deleteNode(index) {
+            let counter = 1
+            let lead = head
+            if (index === 1) {
+                head = head.next
+            } else {
+                while (counter < index - 1) {
+                    lead = lead.next
+                    counter++
+                }
+                let nextNode = lead.next.next
+                lead.next = nextNode
+                console.log("lead", lead)
+            }
 
+        }
+
+        appendNode(200)
         appendNode(300)
         appendNode(400)
         appendNode(500)
         appendNode(600)
         traversing()
-        // console.log(head)
+        deleteNode(3)
+        console.log(head)
 
 
 
