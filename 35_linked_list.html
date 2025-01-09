@@ -67,6 +67,37 @@
                 }
 
             }
+            //====> method=1
+            // searchNode(data) {
+            //     let result = undefined
+            //     let lead = this.head
+            //     let loop = true
+            //     while (loop) {
+            //         lead = lead.next
+            //         loop = !!lead
+            //         if (loop && lead.value === data) {
+            //             loop = false
+            //             result = lead
+            //         }
+            //     }
+            //     console.log(result)
+            // }
+            //== method 2
+            searchNode(data) {
+                let currentNode = this.head;  // Start at the first node (head)
+                let result = undefined;  // This will store the node if we find it
+
+                // Loop through each node in the list until we find the value or reach the end
+                while (currentNode !== null) {
+                    if (currentNode.value === data) {  // If the current node's value matches the data
+                        result = currentNode;  // Store the found node in result
+                        break;  // Stop searching once the node is found
+                    }
+                    currentNode = currentNode.next;  // Move to the next node
+                }
+
+                console.log(result);  // Print the result (either the found node or undefined)
+            }
         }
         let list = new List(100)
         list.appendNode(200)
@@ -78,6 +109,7 @@
         list.traversing()
         list.insertNode(2, 999)
         console.log(list)
+        list.searchNode(400)
     </script>
 </head>
 
