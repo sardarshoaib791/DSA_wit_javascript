@@ -26,7 +26,6 @@
                     this.insertNode(this.root, newNode);
                 }
             }
-
             insertNode(root, newNode) {
                 if (root.value > newNode.value) {
                     if (root.left === null) {
@@ -43,14 +42,29 @@
 
                 }
             }
+            search(root, sVal) {
+                if (root === null) {
+                    return false
+                } else if (root.value === sVal) {
+                    return true
+                } else if (sVal < root.value) {
+                    return this.search(root.left, sVal)
+                } else {
+                    return this.search(root.right, sVal)
+                }
+            }
         }
+
+
+
         let bst = new BSTree()
         // console.log(bst.isTreeEmpty())
         bst.makeTree(20)
         bst.makeTree(10)
         bst.makeTree(5)
         bst.makeTree(30)
-        console.warn(bst)
+        console.warn(bst.search(bst.root, 5))
+        console.warn(bst.root)
 
     </script>
 
