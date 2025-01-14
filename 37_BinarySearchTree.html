@@ -53,6 +53,27 @@
                     return this.search(root.right, sVal)
                 }
             }
+            preOrder(root) {
+                if (root) {
+                    console.log(root.value)
+                    this.preOrder(root.left)
+                    this.preOrder(root.right)
+                }
+            }
+            inOrder(root) {
+                if (root) {
+                    this.inOrder(root.left)
+                    console.log(root.value)
+                    this.inOrder(root.right)
+                }
+            }
+            postOrder(root) {
+                if (root) {
+                    this.postOrder(root.left)
+                    this.postOrder(root.right)
+                    console.log(root.value)
+                }
+            }
         }
 
 
@@ -62,7 +83,13 @@
         bst.makeTree(20)
         bst.makeTree(10)
         bst.makeTree(5)
+        bst.makeTree(11)
         bst.makeTree(30)
+        bst.makeTree(40)
+        bst.makeTree(23)
+        bst.preOrder(bst.root)
+        // bst.inOrder(bst.root)
+        // bst.postOrder(bst.root)
         console.warn(bst.search(bst.root, 5))
         console.warn(bst.root)
 
