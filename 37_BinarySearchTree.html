@@ -74,9 +74,21 @@
                     console.log(root.value)
                 }
             }
+            bfsTraversing() {
+                let que = []
+                que.push(this.root)
+                while (que.length) {
+                    let current = que.shift()
+                    if (current.left) {
+                        que.push(current.left)
+                    }
+                    if (current.right) {
+                        que.push(current.right)
+                    }
+                    console.log(current.value)
+                }
+            }
         }
-
-
 
         let bst = new BSTree()
         // console.log(bst.isTreeEmpty())
@@ -88,6 +100,7 @@
         bst.makeTree(40)
         bst.makeTree(23)
         bst.preOrder(bst.root)
+        bst.bfsTraversing()
         // bst.inOrder(bst.root)
         // bst.postOrder(bst.root)
         console.warn(bst.search(bst.root, 5))
