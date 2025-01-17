@@ -102,6 +102,40 @@
                     return this.maxValue(root.right)
                 }
             }
+            removeData(value) {
+                this.root = this.deleteNode(this.root, value);
+            }
+
+            deleteNode(root, value) {
+                if (root === null) {
+                    return null;
+                }
+
+                if (value < root.value) {
+                    root.left = this.deleteNode(root.left, value);
+                } else if (value > root.value) {
+                    root.right = this.deleteNode(root.right, value);
+                } else {
+                    // Node found
+                    if (!root.left && !root.right) {
+                        // Case 1: No children (leaf node)
+                        return null;
+                    } else if (!root.left) {
+                        // Case 2: Only right child
+                        return root.right;
+                    } else if (!root.right) {
+                        // Case 3: Only left child
+                        return root.left;
+                    }
+
+                    // Case 4: Two children
+                    root.value = this.minValue(root.right); // Use the already defined minValue function
+                    root.right = this.deleteNode(root.right, root.value); // Remove the inorder successor
+                }
+
+                return root; // Ensure the updated root is returned
+            }
+
         }
 
         let bst = new BSTree()
@@ -113,14 +147,17 @@
         bst.makeTree(30)
         bst.makeTree(40)
         bst.makeTree(23)
-        bst.preOrder(bst.root)
-        bst.bfsTraversing()
-        console.warn(bst.search(bst.root, 5))
+
+        bst.removeData(5)
+        // bst.preOrder(bst.root)
+        // bst.bfsTraversing()
+        // console.warn(bst.search(bst.root, 5))
         console.warn(bst.root)
         // bst.inOrder(bst.root)
         // bst.postOrder(bst.root)
-        console.log("minimum value", bst.minValue(bst.root))
-        console.log("MAXIMUM value", bst.maxValue(bst.root))
+        // console.log("minimum value", bst.minValue(bst.root))
+        // console.log("MAXIMUM value", bst.maxValue(bst.root))
+
 
     </script>
 
