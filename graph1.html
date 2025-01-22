@@ -13,6 +13,17 @@
                     this.data[vertex] = []
                 }
             }
+            addEdg(v1, v2) {
+                if (!this.data[v1]) {
+                    this.addVertex(v1)
+                }
+                if (!this.data[v2]) {
+                    this.addVertex(v2)
+                }
+                this.data[v1].push(v2)
+                this.data[v2].push(v1)
+
+            }
 
         }
         let graph1 = new Graph()
@@ -20,6 +31,10 @@
         graph1.addVertex('B')
         graph1.addVertex('C')
         graph1.addVertex('D')
+        graph1.addEdg('A', 'B')
+        graph1.addEdg('A', 'C')
+        graph1.addEdg('B', 'C')
+        graph1.addEdg('B', 'D')
         console.log(graph1.data)
     </script>
 </head>
