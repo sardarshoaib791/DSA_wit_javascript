@@ -32,6 +32,15 @@
                     return item != v1;
                 })
             }
+            removeVertex(vertex) {
+                if (!this.data[vertex]) {
+                    return
+                }
+                for (let item of this.data[vertex]) {
+                    this.removeEdg(vertex, item)
+                }
+                delete this.data[vertex]
+            }
         }
         let graph1 = new Graph()
         graph1.addVertex('A')
@@ -42,8 +51,9 @@
         graph1.addEdg('A', 'C')
         graph1.addEdg('B', 'C')
         graph1.addEdg('B', 'D')
-        graph1.removeEdg('A', 'B')
-        graph1.removeEdg('B', 'D')
+        // graph1.removeEdg('A', 'B')
+        // graph1.removeEdg('B', 'D')
+        graph1.removeVertex('A')
         console.warn(graph1.data)
     </script>
 </head>
