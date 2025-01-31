@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Dropdown with Separate Highlighting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .custom-dropdown {
+            position: relative;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        .selected-option {
+            padding: 10px;
+            padding-right: 30px;
+            position: relative;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            white-space: nowrap;
+            /* Prevent text from wrapping */
+            overflow: hidden;
+            /* Hide overflowing text */
+            text-overflow: ellipsis;
+            /* Show "..." when text overflows */
+            max-width: 100%;
+        }
+
+        .selected-option::after {
+            content: "";
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='currentColor' stroke='currentColor' stroke-width='1.5'%3e%3cpath d='M1.5 5.5a.5.5 0 0 1 .707 0l5.646 5.646a.5.5 0 0 0 .707 0L14.207 5.5a.5.5 0 1 1 .707.707l-6 6a.5.5 0 0 1-.707 0l-6-6a.5.5 0 0 1 0-.707z'/%3e%3c/svg%3e");
+            ;
+
+
+            background-repeat: no-repeat;
+            background-position: center;
+            pointer-events: none;
+        }
+
+        .options {
+            display: none;
+            position: absolute;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-top: none;
+            background-color: #fff;
+            z-index: 1000;
+            max-height: 200px;
+            overflow-y: hidden;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .option {
+            padding: 10px;
+            white-space: normal;
+            word-break: break-all;
+            border-bottom: 1px solid #eee;
+        }
+
+        .option:hover {
+            background-color: #ccc;
+        }
+
+        .option.highlighted {
+            background-color: #056ed7;
+            color: white;
+        }
+
+        .options.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Custom Dropdown with Separate Highlighting for Hover and Keyboard</h1>
+
+    <div class="custom-dropdown">
+        <div class="selected-option">Select an option</div>
+        <div class="options">
+            <div class="option">ThisIsAVeryLongOptionWithoutSpacesThatShouldBreakOnlyAtTheEndOfTheLine</div>
+            <div class="option">AnotherLongOptionWithMoreTextThatNeedsToBreakOnlyAtTheEndOfTheLine</div>
+            <div class="option">Short option</div>
+            <div class="option">This is a long option with spaces but should break only at the end of the line</div>
+        </div>
+    </div>
+
+    <script>
+        const dropdown = document.querySelector('.custom-dropdown');
+        const selectedOption = document.querySelector('.selected-option');
+        const optionsContainer = document.querySelector('.options');
+        const options = document.querySelectorAll('.option');
+
+        let searchString = '';
+        let searchTimeout;
+        let highlightedIndex = -1;
+        let isMouseHovering = false;
+
+        // Open/close dropdown
+        selectedOption.addEventListener('click', (e) => {
+            e.stopPropagation();
+            optionsContainer.classList.toggle('show');
+            if (optionsContainer.classList.contains('show')) {
+                highlightedIndex = -1;
+                updateHighlightedOption();
+            }
+        });
+
+        // Handle option selection
+        options.forEach((option, index) => {
+            option.addEventListener('click', () => {
+                selectedOption.textContent = option.textContent;
+                optionsContainer.classList.remove('show');
+            });
+
+            // Handle mouse hover
+            option.addEventListener('mouseenter', () => {
+                if (!isMouseHovering) {
+                    isMouseHovering = true;
+                    clearHighlightedOption();  // Clear keyboard highlight when mouse hovers
+                }
+                option.classList.add('highlighted');
+            });
+
+            option.addEventListener('mouseleave', () => {
+                isMouseHovering = false;
+                option.classList.remove('highlighted');
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            optionsContainer.classList.remove('show');
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!optionsContainer.classList.contains('show')) return;
+
+            if (e.key === 'ArrowDown') {
+                highlightedIndex = (highlightedIndex + 1) % options.length;
+                updateHighlightedOption();
+            } else if (e.key === 'ArrowUp') {
+                highlightedIndex = (highlightedIndex - 1 + options.length) % options.length;
+                updateHighlightedOption();
+            } else if (e.key === 'Enter') {
+                if (highlightedIndex !== -1) {
+                    options[highlightedIndex].click();
+                }
+            } else if (e.key.length === 1) { // Typing to search
+                clearTimeout(searchTimeout);
+                searchString += e.key.toLowerCase();
+                highlightMatchingOption();
+                searchTimeout = setTimeout(() => (searchString = ''), 1000);
+            }
+        });
+
+        // Highlight matching option based on search string
+        function highlightMatchingOption() {
+            for (let i = 0; i < options.length; i++) {
+                if (options[i].textContent.toLowerCase().startsWith(searchString)) {
+                    highlightedIndex = i;
+                    updateHighlightedOption();
+                    break;
+                }
+            }
+        }
+
+        // Update highlighted option
+        function updateHighlightedOption() {
+            clearHighlightedOption();
+            isMouseHovering = false;  // Reset mouse hover flag
+            if (highlightedIndex !== -1) {
+                options[highlightedIndex].classList.add('highlighted');
+                options[highlightedIndex].scrollIntoView({ block: 'nearest' });
+            }
+        }
+
+        // Clear all highlighted options
+        function clearHighlightedOption() {
+            options.forEach(option => {
+                option.classList.remove('highlighted');
+            });
+        }
+    </script>
+
+</body>
+
+</html>
