@@ -4,19 +4,60 @@
 <head>
     <title>Document</title>
     <script>
-        let data = [40, 30, 12, 25]
+        // let money = 100
+        // let apple = 0
+        // function buyApple(x) {
+        //     if (x > 0) {
+        //         console.log('i have', x, "Rs, and", apple, "Apple")
+        //         buyMore(x)
+        //     } else {
+        //         console.log("I don't have more money,  I have just", apple, "Apple")
+        //     }
+        // }
+        // function buyMore(x) {
+        //     apple++
+        //     buyApple(x - 20)
 
-        for (let i = 0; i < data.length; i++) {
-            let minVal = i
-            for (let j = i + 1; j < data.length; j++) {
-                if (data[j] < data[minVal]) {
-                    minVal = j
-                }
+        // }
+        // buyApple(money)
+
+        // interview questions
+        // function test(x) {
+        //     if (x > 0) {
+        //         test(x - 1)
+        //     }
+        //     console.log(x)
+        // }
+        // test(5)
+
+        //====>revers array
+        // let reversed = []
+        // function reversArray(x) {
+        //     for (let i = x.length - 1; i >= 0; i--) {
+        //         reversed.push(x[i])
+        //     }
+        //     return reversed
+
+        // }
+        // let data = [2, 4, 5, 7, 10, 9]
+        // reversArray(data)
+        // data = reversed
+        // console.log(data)
+
+
+        /// 2nd method
+        let data = [2, 6, 7, 9, 3, 10, 12]
+        function customReverse(data, start, end) {
+            console.log(data)
+            if (start <= end) {
+                [data[start], data[end]] = [data[end], data[start]] // swap without temp
+                customReverse(data, start + 1, end - 1)
             }
-            [data[i], data[minVal]] = [data[minVal], data[i]]
-
         }
+        customReverse(data, 0, data.length - 1)
         console.log(data)
+
+
     </script>
 </head>
 
