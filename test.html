@@ -46,22 +46,53 @@
 
 
         /// 2nd method====>
-        let data = [2, 6, 7, 9, 3, 10, 12]
-        function customReverse(data, start, end) {
-            console.log(data)
-            if (start <= end) {
-                [data[start], data[end]] = [data[end], data[start]] // swap without temp
-                customReverse(data, start + 1, end - 1)
+        // let data = [2, 6, 7, 9, 3, 10, 12]
+        // function customReverse(data, start, end) {
+        //     console.log(data)
+        //     if (start <= end) {
+        //         [data[start], data[end]] = [data[end], data[start]] // swap without temp
+        //         customReverse(data, start + 1, end - 1)
+        //     }
+        // }
+        // customReverse(data, 0, data.length - 1)
+        // console.log(data)
+
+        //Stack ============>
+        let stack = []
+        let currentSize = stack.length
+        let max = 5
+        function push() {
+            let val = parseInt(document.getElementById('newVal').value)
+            if (currentSize < max) {
+                stack[currentSize] = val
+                currentSize++
+            } else {
+                alert("stack is full")
             }
+            console.log(stack)
+
         }
-        customReverse(data, 0, data.length - 1)
-        console.log(data)
+        function pop() {
+            if (currentSize > 0) {
+                currentSize--
+                stack.length = currentSize
+            }
+            else {
+                alert('Already empty')
+            }
+            console.log(stack)
+
+        }
+
 
 
     </script>
 </head>
 
 <body>
+    <input type="number" id="newVal">
+    <button onclick="push()">Add element</button>
+    <button onclick="pop()">Remove element</button>
 
 </body>
 
