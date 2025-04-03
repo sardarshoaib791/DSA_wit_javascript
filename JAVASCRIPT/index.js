@@ -125,3 +125,22 @@ var a = "AAA";
 let b = "BBB";
 const c = "CCC";
 console.log(b, c);
+
+Hi("before initilzation");
+//function declearation
+function Hi(a) {
+  console.log("hello from function", a);
+}
+Hi("after initialization");
+
+//function expression
+let sayHi = function () {
+  console.log("hello from function expression");
+};
+sayHi();
+
+//IFFE function
+
+(function () {
+  console.log("hello form IFFE function");
+})();
