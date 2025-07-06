@@ -1,8 +1,44 @@
-div {
+
+/* body{
+    margin: 0;
+} */
+
+
+.divab{
+    width: 20px;
+    height: 20px;
+    background-color: blueviolet;
+    position: absolute;   
+}
+
+.innerDiv {
+    width: 10px;
+    height: 10px;
+    background-color: cadetblue;
+    position: relative;
+    top: 20px;
+}
+
+.div2 {
     position: relative;
     background-color: chartreuse;
-    top: 5px;
+    /* top: 5px;
     right: 5px;
     left: 5px;
-    bottom: 5px;
+    bottom: 5px; */
+    inset: 5px;   /*all properties, left, right, bottom and top at once */
+}
+ul{
+    position: relative;
+    background-color: brown;
+}
+.css-element{
+    background-color: aqua;
+    position: absolute;
+    /* top: 5px;
+    right: 5px;
+    left: 5px;
+    bottom: 5px; */
+    inset: 5px;
+    
 }
